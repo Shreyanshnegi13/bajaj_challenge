@@ -8,6 +8,16 @@ import { useToast } from "@/components/ui/use-toast";
 import { useState } from "react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
+interface ResultType {
+  is_success: boolean;
+  user_id: string;
+  email: string;
+  roll_number: string;
+  numbers: number[];
+  alphabets: string[];
+  highest_lowercase_alphabet: string;
+}
+
 export default function Home() {
   const { toast } = useToast();
   const [apiData, setApiData] = useState("");
@@ -15,7 +25,7 @@ export default function Home() {
   const [toggleAlphabet, setToggleAlphabet] = useState(false);
   const [toggleHighestLowerAlphabet, setToggleHighestLowerAlphabet] =
     useState(false);
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState<ResultType | null>(null);
 
   const handelSubmit = async () => {
     try {
@@ -37,7 +47,7 @@ export default function Home() {
       } else {
         toast({
           title: "Error!",
-          description: `Error: ${response.data.message}`,
+          description: Error: ${response.data.message},
           variant: "destructive",
         });
       }
