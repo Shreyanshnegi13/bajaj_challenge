@@ -47,7 +47,7 @@ export default function Home() {
       } else {
         toast({
           title: "Error!",
-          description: Error: ${response.data.message},
+          description: `Error: ${response.data.message}`,
           variant: "destructive",
         });
       }
